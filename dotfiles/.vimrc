@@ -78,8 +78,3 @@ else
     colorscheme solarized
 endif
 
-
-" code folding
-
-autocmd BufRead * setlocal foldmethod=marker
-autocmd BufRead * normal zM
