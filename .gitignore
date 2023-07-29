@@ -1,0 +1,10 @@
+.kube/*
+!.kube/config
+Caskfile.lock.json
+.DS_Store
+.emacs.desktop
+.emacs.desktop.lock
+*~
+\#*
+.\#*
+
