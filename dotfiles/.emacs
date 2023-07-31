@@ -47,21 +47,18 @@
 
 ;; now load wolfram mode, which is kept locally
 (add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
-(load "wolfram-lsp-mode")
+(load "wolfram-language-mode")
+(setq wolfram-program "wolframscript")
+(add-to-list 'auto-mode-alist '("\\.wl$" . wolfram-language-mode))
+(add-to-list 'auto-mode-alist '("\\.wls$" . wolfram-language-mode))
 
-
-;;  (autoload 'wolfram-mode "wolfram-mode" nil t)
-;;  (autoload 'run-wolfram "wolfram-mode" nil t)
-(setq wolfram-program "/Applications/Mathematica.app/Contents/MacOS/WolframKernel")
-(add-to-list 'auto-mode-alist '("\\.wl$" . wolfram-lsp-mode))
-(add-to-list 'auto-mode-alist '("\\.wls$" . wolfram-lsp-mode))
-;;  (setq wolfram-path "directory-in-Mathematica-$Path") ;; e.g. on Linux ~/.Mathematica/Applications
-
-(require 'eglot)
+;; (with-eval-after-load 'eglot
+  ;;  (add-to-list 'eglot-server-programs
+;;		 `(wolfram-language-mode . ("/Applications/Mathematica.app/Contents/MacOS/WolframKernel" "-noinit -noprompt -nopaclet -noicon -nostartuppaclets -run 'Needs[\"LSPServer`\"];StartServer[]'"))))
 
 (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
-		 `(wolfram-lsp-mode . ("~/git/wolfram-lsp-mode/start-wls.sh"))
+		 `(wolfram-language-mode . ("~/git/wolfram-language-mode/start-wls.sh"))
 		 )
     )
 

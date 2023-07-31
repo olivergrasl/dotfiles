@@ -4,7 +4,7 @@ Contains the key settings and access keys stored in dotfiles for easy transfer b
 
 The follwing symlinks need to be made:
 
-.emacs -> .dotfiles/emacs/.emacs
+.emacs -> .dotfiles/.emacs
 .vim -> .dotfiles/vim/.vim
 .vimrc -> .dotfiles/vim/.vimrc
 .zprofile -> .dotfiles/zsh/.zprofile
@@ -40,9 +40,9 @@ This will clone or download this repo to ~/.dotfiles (depending on the availabil
 
 Alternatively, clone manually into the desired location:
 
-`git clone https://github.com/webpro/dotfiles.git ~/.dotfiles`
+`git clone https://github.com/olivergrasl/dotfiles.git ~/.dotfiles`
 
-Use the Makefile to install the packages listed above, and symlink runcom and config files (using stow):
+Use the Makefile to install the packages listed above, and symlink the config files (using stow):
 
 ```
 cd ~/.dotfiles
@@ -86,17 +86,8 @@ Also need to do the following:
 
 * Install solarized for  mac terminal
 * Complete Outlook accounts
-    * transentis
-        * Main
-        * Billing
-        * Careers
-        * Info
-    * SRH
-    * Private/icloud
 * Add fonts
     * Franklin Gothic
-    * SRH
-* Import StarMoney Backup
 * Copy data directory (this is 'non-essential' data that is not backed up ... but contains caches etc. which I don't want to rebuild)
 
 
