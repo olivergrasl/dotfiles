@@ -52,17 +52,11 @@
 (add-to-list 'auto-mode-alist '("\\.wl$" . wolfram-language-mode))
 (add-to-list 'auto-mode-alist '("\\.wls$" . wolfram-language-mode))
 
-;; (with-eval-after-load 'eglot
-  ;;  (add-to-list 'eglot-server-programs
-;;		 `(wolfram-language-mode . ("/Applications/Mathematica.app/Contents/MacOS/WolframKernel" "-noinit -noprompt -nopaclet -noicon -nostartuppaclets -run 'Needs[\"LSPServer`\"];StartServer[]'"))))
-
-(with-eval-after-load 'eglot
+ (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
-		 `(wolfram-language-mode . ("~/git/wolfram-language-mode/start-wls.sh"))
-		 )
-    )
+		 `(wolfram-language-mode . ("/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel" "-noinit" "-noprompt" "-nopaclet" "-noicon" "-nostartuppaclets" "-run" "Needs[\"LSPServer`\"];LSPServer`StartServer[]"))))
 
-;; newline-without-break-of-line
+
 (defun newline-without-break-of-line ()
   "1. move to end of the line.
   2. insert newline with index"
