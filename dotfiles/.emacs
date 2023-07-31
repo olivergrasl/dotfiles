@@ -48,9 +48,7 @@
 ;; now load wolfram mode, which is kept locally
 (add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
 (load "wolfram-language-mode")
-(setq wolfram-program "wolframscript")
-(add-to-list 'auto-mode-alist '("\\.wl$" . wolfram-language-mode))
-(add-to-list 'auto-mode-alist '("\\.wls$" . wolfram-language-mode))
+
 
  (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
