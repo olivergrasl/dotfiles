@@ -10,6 +10,8 @@
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-tilt-scroll t)
  '(ns-right-alternate-modifier 'none)
+ '(org-agenda-files
+   '("~/data/journal/20230809.org" "/Users/olivergrasl/data/journal/20230806.org" "/Users/olivergrasl/data/journal/20230807.org" "/Users/olivergrasl/data/journal/20230808.org"))
  '(package-selected-packages
    '(eglot use-package cape corfu vertico magit solarized-theme markdown-mode))
  '(tool-bar-mode nil))
@@ -20,12 +22,13 @@
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#839496" :background "#002b36")))))
 
-
+(setq org-agenda-files (directory-files-recursively "~/data/journal" "^[^\\.].+\\.org$"))
+(setq backup-directory-alist            '((".*" . "~/.EmacsBackup")))
 
 (require 'package)
 
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ; list the packages you want
 (setq package-list
@@ -54,6 +57,9 @@
     (add-to-list 'eglot-server-programs
 		 `(wolfram-language-mode . ("/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel" "-noinit" "-noprompt" "-nopaclet" "-noicon" "-nostartuppaclets" "-run" "Needs[\"LSPServer`\"];LSPServer`StartServer[]"))))
 
+
+(load "whole-line-or-region")
+(whole-line-or-region-global-mode)
 
 (defun newline-without-break-of-line ()
   "1. move to end of the line.
@@ -100,6 +106,8 @@
 ;;  :bind (:map projectile-mode-map
 ;;              ("s-p" . projectile-command-map)
 ;;              ("C-c p" . projectile-command-map)))
+
+
 
 
 
