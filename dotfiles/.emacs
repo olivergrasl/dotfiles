@@ -10,8 +10,6 @@
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-tilt-scroll t)
  '(ns-right-alternate-modifier 'none)
- '(org-agenda-files
-   '("~/data/journal/20230809.org" "/Users/olivergrasl/data/journal/20230806.org" "/Users/olivergrasl/data/journal/20230807.org" "/Users/olivergrasl/data/journal/20230808.org"))
  '(package-selected-packages
    '(eglot use-package cape corfu vertico magit solarized-theme markdown-mode))
  '(tool-bar-mode nil))
@@ -24,6 +22,10 @@
 
 (setq org-agenda-files (directory-files-recursively "~/data/journal" "^[^\\.].+\\.org$"))
 (setq backup-directory-alist            '((".*" . "~/.EmacsBackup")))
+
+(with-eval-after-load 'org       
+  (setq org-startup-indented t) ; Enable `org-indent-mode' by default
+  (add-hook 'org-mode-hook #'visual-line-mode))
 
 (require 'package)
 
@@ -86,7 +88,7 @@
 ;; larger font size
 (set-face-attribute 'default nil :height 160)
 
-(cua-mode t)
+;;(cua-mode t)
 ;;    (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 ;;    (transient-mark-mode 1) ;; No region when it is not highlighted
 ;;    (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
