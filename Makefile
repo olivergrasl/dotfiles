@@ -9,12 +9,16 @@ export ACCEPT_EULA=Y
 
 .PHONY: test
 
-all: sudo core-macos packages link 1password ohmyzsh appconfig
+all: sudo core-macos packages link 1password ohmyzsh appconfig term
 
 core-macos: brew git 
 
 stow: brew
 	is-executable stow || brew install stow
+
+term:
+	chmod +x ./macos/install-terminfo-xterm-24bit.bash
+	./macos/install-terminfo-xterm-24bit.bash
 
 sudo:
 	sudo -v
