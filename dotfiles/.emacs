@@ -30,6 +30,14 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+;; other key bindings
+
+(global-set-key (kbd "M-o") (lambda ()
+			      (interactive)
+			      (end-of-line)
+			      (newline-and-indent)
+			      ) )
+
 (with-eval-after-load 'org       
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
   (add-hook 'org-mode-hook #'visual-line-mode))
@@ -79,22 +87,8 @@
     (add-to-list 'eglot-server-programs
 		 `(wolfram-language-mode . ("/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel" "-noinit" "-noprompt" "-nopaclet" "-noicon" "-nostartuppaclets" "-run" "Needs[\"LSPServer`\"];LSPServer`StartServer[]"))))
 
-
-
-
 (load "whole-line-or-region")
 (whole-line-or-region-global-mode)
-
-(defun newline-without-break-of-line ()
-  "1. move to end of the line.
-  2. insert newline with index"
-
-  (interactive)
-  (let ((oldpos (point)))
-    (end-of-line)
-    (newline-and-indent)))
-
-(global-set-key (kbd "<M-RET>") 'newline-without-break-of-line)
 
 (require 'comint)
 (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
