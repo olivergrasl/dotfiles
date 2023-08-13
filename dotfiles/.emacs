@@ -10,8 +10,6 @@
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-tilt-scroll t)
  '(ns-right-alternate-modifier 'none)
- '(package-selected-packages
-   '(eglot use-package cape corfu vertico magit solarized-theme markdown-mode))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -34,7 +32,7 @@
 
 ; list the packages you want
 (setq package-list
-    '(bind-key cape compat corfu dash eglot eldoc external-completion git-commit jsonrpc magit magit-section markdown-mode project solarized-theme transient use-package vertico viper with-editor xref))
+    '(bind-key cape compat corfu dash external-completion git-commit jsonrpc magit magit-section markdown-mode solarized-theme transient vertico viper with-editor xref))
 
 
 ; activate all the packages
@@ -49,6 +47,19 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; treesiter repos
+
+(setq treesit-language-source-alist
+   '((css "https://github.com/tree-sitter/tree-sitter-css")
+     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+     (html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (python "https://github.com/tree-sitter/tree-sitter-python")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     ))
+
 
 ;; now load wolfram mode, which is kept locally
 (add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
@@ -58,6 +69,8 @@
  (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
 		 `(wolfram-language-mode . ("/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel" "-noinit" "-noprompt" "-nopaclet" "-noicon" "-nostartuppaclets" "-run" "Needs[\"LSPServer`\"];LSPServer`StartServer[]"))))
+
+
 
 
 (load "whole-line-or-region")
@@ -88,29 +101,11 @@
 ;; larger font size
 (set-face-attribute 'default nil :height 160)
 
-;;(cua-mode t)
-;;    (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
-;;    (transient-mark-mode 1) ;; No region when it is not highlighted
-;;    (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
-
 (tool-bar-mode -1)
 (setq-default cursor-type 'bar)
 
 
 (require 'use-package)
-
-
-;; projectile
-;;(use-package projectile
-;;  :ensure t
-;;  :init
-;;  (projectile-mode +1)
-;;  :bind (:map projectile-mode-map
-;;              ("s-p" . projectile-command-map)
-;;              ("C-c p" . projectile-command-map)))
-
-
-
 
 
 ;; Enable Corfu completion UI
