@@ -18,8 +18,17 @@
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#839496" :background "#002b36")))))
 
-(setq org-agenda-files (directory-files-recursively "~/data/journal" "^[^\\.].+\\.org$"))
+;; avoid backup files all over the place
 (setq backup-directory-alist            '((".*" . "~/.EmacsBackup")))
+
+;; org node settings
+(setq org-agenda-files (directory-files-recursively "~/zettelkasten" "^[^\\.].+\\.org$"))
+
+
+(setq org-default-notes-file "~/zettelkasten/inbox.org")
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
 
 (with-eval-after-load 'org       
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
@@ -32,7 +41,7 @@
 
 ; list the packages you want
 (setq package-list
-    '(bind-key cape compat corfu dash external-completion git-commit jsonrpc magit magit-section markdown-mode solarized-theme transient vertico viper with-editor xref))
+    '(bind-key cape compat corfu dash external-completion git-commit jsonrpc magit magit-section markdown-mode solarized-theme transient vertico with-editor xref))
 
 
 ; activate all the packages
