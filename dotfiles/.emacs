@@ -31,7 +31,7 @@
 (global-set-key (kbd "C-c c") #'org-capture)
 
 (defun today()
-  "open today's journal fine"
+  "open today's journal file"
   (interactive)
   (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d") ".org")))
 )
