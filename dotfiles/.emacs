@@ -30,6 +30,12 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+(defun today()
+  "open today's journal fine"
+  (interactive)
+  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d") ".org")))
+)
+
 ;; other key bindings
 
 (global-set-key (kbd "M-o") (lambda ()
