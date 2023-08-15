@@ -9,7 +9,6 @@
  '(dired-kill-when-opening-new-dired-buffer t)
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-tilt-scroll t)
- '(ns-right-alternate-modifier 'none)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -43,6 +42,12 @@
 			      (end-of-line)
 			      (newline-and-indent)
 			      ) )
+
+(define-key key-translation-map (kbd "M-5") (kbd "["))
+(define-key key-translation-map (kbd "M-6") (kbd "]"))
+(define-key key-translation-map (kbd "M-8") (kbd "{"))
+(define-key key-translation-map (kbd "M-9") (kbd "}"))
+(define-key key-translation-map (kbd "M-7") (kbd "|"))
 
 (with-eval-after-load 'org       
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
