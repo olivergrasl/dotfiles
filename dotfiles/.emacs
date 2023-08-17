@@ -33,7 +33,20 @@
   "open today's journal file"
   (interactive)
   (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d") ".org")))
+  )
+
+(defun yesterday()
+  "open yesterday's journal file"
+  (interactive)
+  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d" (time-subtract (current-time) (seconds-to-time 86000))) ".org")))
+  )
+
+(defun tomorrow()
+  "open tomorrows's journal file"
+  (interactive)
+  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d" (time-add (current-time) (seconds-to-time 86000))) ".org")))
 )
+
 
 ;; other key bindings
 
@@ -43,11 +56,13 @@
 			      (newline-and-indent)
 			      ) )
 
+(setq ns-right-alternate-modifier 'none) ;; works fine on with mac keyboard, the following is necessary for ipad keyboards
 (define-key key-translation-map (kbd "M-5") (kbd "["))
 (define-key key-translation-map (kbd "M-6") (kbd "]"))
 (define-key key-translation-map (kbd "M-8") (kbd "{"))
 (define-key key-translation-map (kbd "M-9") (kbd "}"))
 (define-key key-translation-map (kbd "M-7") (kbd "|"))
+(define-key key-translation-map (kbd "M-n") (kbd "~"))
 
 (with-eval-after-load 'org       
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
