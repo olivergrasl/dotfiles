@@ -23,16 +23,24 @@
 ;; org node settings
 (setq org-agenda-files (directory-files-recursively "~/zettelkasten" "^[^\\.].+\\.org$"))
 
+(defun today-file()
+  "path to today file"
+  (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d") ".org")
+)
 
-(setq org-default-notes-file "~/zettelkasten/inbox.org")
+
+
+(setq org-default-notes-file (today-file))
+
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+  
 (defun today()
   "open today's journal file"
   (interactive)
-  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d") ".org")))
+  (switch-to-buffer (find-file (today-file)))
   )
 
 (defun yesterday()
