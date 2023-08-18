@@ -102,4 +102,4 @@ export LANG=en_US.UTF-8
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 eval "$(direnv hook zsh)"
 
-alias run-emacs='TERM=xterm-emacs emacs -nw'
+alias run-emacs='TERM=xterm-emacs-leg emacs -nw'
