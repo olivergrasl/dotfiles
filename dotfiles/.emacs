@@ -1,4 +1,4 @@
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -10,12 +10,12 @@
  '(mouse-wheel-flip-direction t)
  '(mouse-wheel-tilt-scroll t)
  '(tool-bar-mode nil))
-(custom-set-faces
+;;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#839496" :background "#002b36")))))
+;; '(default ((((class color) (min-colors 89)) (:foreground "#839496" :background "#002b36")))))
 
 ;; avoid backup files all over the place
 (setq backup-directory-alist            '((".*" . "~/.EmacsBackup")))
