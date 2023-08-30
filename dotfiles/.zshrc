@@ -99,6 +99,7 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export WolframKernel="/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel"
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 eval "$(direnv hook zsh)"
 
