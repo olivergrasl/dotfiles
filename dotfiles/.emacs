@@ -43,6 +43,7 @@
   "open today's journal file"
   (interactive)
   (switch-to-buffer (find-file (today-file)))
+  (add-to-list 'org-agenda-files 'today-file)
   )
 
 (defun yesterday()
