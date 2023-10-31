@@ -1,4 +1,4 @@
-(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -30,7 +30,10 @@
   (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d") ".org")
 )
 
-
+(defun fill-journal-template(title)
+  "fills journal template if buffer is empty"
+  (if (= (buffer-size) 0) (insert (concat "#+title:" title "\n#+author: Dr. Oliver Grasl\n#+filetags: journal")))
+ )
 
 (setq org-default-notes-file (today-file))
 
@@ -43,20 +46,27 @@
   "open today's journal file"
   (interactive)
   (switch-to-buffer (find-file (today-file)))
-  (add-to-list 'org-agenda-files 'today-file)
+  (add-to-list 'org-agenda-files (today-file))
+  (fill-journal-template (format-time-string "%Y-%m-%d"))
   )
 
 (defun yesterday()
   "open yesterday's journal file"
   (interactive)
-  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d" (time-subtract (current-time) (seconds-to-time 86000))) ".org")))
-  )
+  (setq journal-day (time-subtract (current-time) (seconds-to-time 86000)))
+  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d" journal-day) ".org")))
+  (fill-journal-template (format-time-string "%Y-%m-%d" journal-day))
+ )
 
 (defun tomorrow()
   "open tomorrows's journal file"
   (interactive)
-  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d" (time-add (current-time) (seconds-to-time 86000))) ".org")))
+  (setq journal-day (time-add (current-time) (seconds-to-time 86000)))
+  (switch-to-buffer (find-file (concat "~/zettelkasten/journal/" (format-time-string "%Y%m%d" journal-day) ".org")))
+  ;; if buffer is empty, add the boiler plate heading
+  (fill-journal-template (format-time-string "%Y-%m-%d" journal-day))
 )
+
 
 
 ;; other key bindings
