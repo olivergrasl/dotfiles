@@ -16,13 +16,16 @@
 
 ;; settings
 
- '(custom-safe-themes
+(setq custom-safe-themes
    '("fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" default))
- '(desktop-save-mode t)
- '(dired-kill-when-opening-new-dired-buffer t)
- '(mouse-wheel-flip-direction t)
- '(mouse-wheel-tilt-scroll t)
-'(tool-bar-mode nil)
+(setq desktop-save-mode t)
+(setq dired-kill-when-opening-new-dired-buffer t)
+(setq mouse-wheel-flip-direction t)
+(setq mouse-wheel-tilt-scroll t)
+(setq tool-bar-mode nil)
+(setq inhibit-startup-screen t)
+(setq inhibit-startup-message t)
+
 
 ;; avoid backup files all over the place
 (setq backup-directory-alist            '((".*" . "~/.EmacsBackup")))
@@ -32,7 +35,7 @@
   (insert "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"file:///Users/olivergrasl/zettelkasten/css/style.css\" />")
 )
 
-;; org node settings
+;; org mode settings
 (setq org-agenda-files (directory-files-recursively "~/zettelkasten" "^[^\\.].+\\.org$"))
 
 (defun today-file()
@@ -97,7 +100,13 @@
 
 (with-eval-after-load 'org       
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
-  (add-hook 'org-mode-hook #'visual-line-mode))
+  (add-hook 'org-mode-hook #'visual-line-mode)
+  (setq org-todo-keywords
+      '((sequence "TODO" "SOON" "NEXT" "NOW" "|" "DONE" "NOT DOING")))
+ )
+
+
+
 
 (require 'package)
 
