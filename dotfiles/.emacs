@@ -1,19 +1,5 @@
 (load-theme 'solarized-dark t)
 
-;;(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-;;)
-;;(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-;; '(default ((((class color) (min-colors 89)) (:foreground "#839496" :background "#002b36")))))
-
-
 ;; settings
 
 (setq custom-safe-themes
@@ -25,6 +11,8 @@
 (setq tool-bar-mode nil)
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
+(setq create-lockfiles nil)
+(delete-selection-mode 1)
 
 
 ;; avoid backup files all over the place
@@ -100,6 +88,7 @@
 
 (with-eval-after-load 'org       
   (setq org-startup-indented t) ; Enable `org-indent-mode' by default
+  (setq org-support-shift-select t)
   (add-hook 'org-mode-hook #'visual-line-mode)
   (setq org-todo-keywords
       '((sequence "TODO" "SOON" "NEXT" "NOW" "|" "DONE" "NOT DOING")))
@@ -254,9 +243,4 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
   )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
