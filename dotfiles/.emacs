@@ -18,6 +18,7 @@
 ;; avoid backup files all over the place
 (setq backup-directory-alist            '((".*" . "~/.EmacsBackup")))
 
+
 (defun stylesheet()
  (interactive)
   (insert "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"file:///Users/olivergrasl/zettelkasten/css/style.css\" />")
@@ -130,17 +131,22 @@
      (python "https://github.com/tree-sitter/tree-sitter-python")
      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")
      ))
 
 
 ;; now load wolfram mode, which is kept locally
-(add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
-(load "wolfram-language-mode")
+(if (file-directory-p (concat user-emacs-directory "lisp/"))
+    (progn
+     (add-to-list 'load-path (concat user-emacs-directory "lisp/" ))
+     (load "wolfram-language-mode")
 
-
- (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
+     (with-eval-after-load 'eglot
+       (add-to-list 'eglot-server-programs
 		 `(wolfram-language-mode . ("/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel" "-noinit" "-noprompt" "-nopaclet" "-noicon" "-nostartuppaclets" "-run" "Needs[\"LSPServer`\"];LSPServer`StartServer[]"))))
+
+    )
+)
 
 (load "whole-line-or-region")
 (whole-line-or-region-global-mode)
@@ -244,3 +250,15 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
   )
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
