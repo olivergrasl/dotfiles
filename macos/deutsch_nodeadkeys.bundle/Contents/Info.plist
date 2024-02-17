@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>org.sil.ukelele.keyboardlayout.deutsch_nodeadkeys</string>
+	<key>CFBundleName</key>
+	<string>deutsch_nodeadkeys</string>
+	<key>CFBundleVersion</key>
+	<string></string>
+	<key>KLInfo_Deutsch Ohne Deadkeys</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISIconIsTemplate</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>org.sil.ukelele.keyboardlayout.deutsch_nodeadkeys.deutschohnedeadkeys</string>
+		<key>TISIntendedLanguage</key>
+		<string>de</string>
+	</dict>
+</dict>
+</plist>
