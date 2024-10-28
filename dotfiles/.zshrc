@@ -70,7 +70,7 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt ag 1password doctl vscode)
+plugins=(git git-prompt 1password doctl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,7 +100,15 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export WolframKernel="/Applications/Wolfram Engine.app/Contents/MacOS/WolframKernel"
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export PATH="/opt/homebrew/opt/node/bin:$PATH"
 eval "$(direnv hook zsh)"
 
 alias run-emacs='TERM=xterm-emacs-leg emacs -nw'
+
+# pnpm
+export PNPM_HOME="/Users/olivergrasl/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
